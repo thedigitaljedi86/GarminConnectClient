@@ -88,8 +88,10 @@ namespace GarminConnectClient
 
 		private static bool IsDashboardUri(Uri uri)
 		{
-			return uri.Host == "connect.garmin.com"
-				&& uri.LocalPath == "/dashboard";
+        		 if(uri != null && uri.LocalPath == "/dashboard")
+        		    return uri.Host == "connect.garmin.com" && uri.LocalPath == "/dashboard";
+        		 else
+			    return uri.Host == "connect.garmin.com" && uri.LocalPath == "/modern/";
 		}
 
 		private string GetServiceTicketUrl(HttpWebResponse signInResponse)
